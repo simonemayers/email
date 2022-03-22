@@ -25,14 +25,12 @@ var appData ={
     ]
 }
 
-// console.log(appData)
-// console.log(appData.name)
 
 //Get a list of inbox names
 let mailboxes = []
 function getInboxNames(){
     appData.mailboxes.map(m => mailboxes.push(m.name))
-    // console.log(mailboxes)
+    console.log(mailboxes)
     return mailboxes
 }
 getInboxNames()
@@ -42,7 +40,7 @@ let emails = [];
 function getListOfEmails(){
     appData.mailboxes.map(m=> emails.push(m.messages))
     emails = emails.flat()
-    // console.log(emails)
+    console.log(emails)
     return emails
 }
 getListOfEmails()
@@ -51,7 +49,7 @@ getListOfEmails()
 let emailText = []
 function getSecondEmailText(){
     appData.mailboxes.map(m => emailText.push(m.messages[1].message))
-    // console.log(emailText)
+    console.log(emailText)
     return emailText; 
 }
 getSecondEmailText()
@@ -63,7 +61,7 @@ function markEmailAsSent(emailText){
     let unsent = messages.flat().find(m=> m["message"] === emailText)
     let sentMessages = appData.mailboxes.find(m=> m["name"] === "sent")["messages"]
     sentMessages.push(unsent)
-    // console.log(sentMessages)
+    console.log(sentMessages)
     return sentMessages
 }
 markEmailAsSent("An assignment has been graded")
@@ -72,9 +70,9 @@ markEmailAsSent("An assignment has been graded")
 //Add a draft email to the drafts mailbox
 function draftEmails(draftMessage, draftTo){
     let draftEmails = appData.mailboxes.find(m=> m["name"] === "drafts")["messages"]
+    console.log(draftEmails);
+    let newEmail = {message: draftMessage, to: draftTo};
     console.log(draftEmails)
-    let newEmail = {message: draftMessage, to: draftTo}
-    console.log(newEmail)
-    console.log(draftEmails)
+    return draftEmails
 }
 draftEmails("Hello", "Mom")
